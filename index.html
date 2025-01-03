@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wisata Banten</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f0f4f8;
+        color: #333;
+      }
+
+      .navbar {
+        background-color: #3b5b8c;
+      }
+
+      .navbar-brand {
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .navbar-nav .nav-link {
+        color: #fff !important;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: #f0a500 !important;
+      }
+
+      .active {
+        color: #f0a500 !important;
+      }
+
+      /* Review Section */
+      .review-card {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        background-color: #ffffff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .review-card img {
+        border-radius: 50%;
+        height: 80px;
+        width: 80px;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+
+      .review-card p {
+        font-style: italic;
+        color: #666;
+      }
+
+      /* Form Section */
+      .form-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-container label {
+        font-weight: bold;
+      }
+
+      .form-container textarea {
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+      }
+
+      /* Gallery Section */
+      .gallery-item img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Contact Section */
+      .contact-info p {
+        font-size: 1.25rem;
+        color: #333;
+      }
+
+      footer {
+        background-color: #3b5b8c;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      footer p {
+        margin-bottom: 0;
+      }
+
+      #loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.75); /* Overlay gelap */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .spinner-border {
+        width: 3rem;
+        height: 3rem;
+        border-width: 0.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Wisata Banten</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#beranda" id="nav-beranda">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#destinasi" id="nav-destinasi"
+                >Destinasi</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#galeri" id="nav-galeri">Galeri</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#review" id="nav-review">Review</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#form-saran" id="nav-saran">Saran</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#kontak" id="nav-kontak">Kontak</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="loading-screen" class="loading-overlay">
+      <div class="loading-content">
+        <div class="spinner"></div>
+      </div>
+    </div>
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+      <div class="hero-overlay"></div>
+      <div class="container text-center text-white">
+        <h1 class="display-4 mb-4">Selamat Datang di Wisata Banten</h1>
+        <p class="lead mb-4">
+          Temukan pesona alam dan budaya Banten. Jelajahi destinasi terbaik kami
+          yang menakjubkan!
+        </p>
+        <!-- Tombol yang mengarah ke section destinasi -->
+      </div>
+    </section>
+
+    <!-- Destinasi Section -->
+    <section id="destinasi" class="py-5">
+      <div class="container text-center">
+        <h2 class="display-4 mb-4">Destinasi Wisata Indonesia</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card destination-card">
+              <img
+                src="assets/img/bagedur.jpg"
+                class="card-img-top"
+                alt="Pantai"
+                style="height: 200px"
+              />
+              <div class="card-body" style="height: 280px">
+                <h5 class="card-title fw-semibold">Pantai Bagedur</h5>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-location-dot"></i></span>
+                  Ds.Sukamanah, Malingping, Lebak, Banten
+                </p>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-tag"></i></span> Rp.2.000/orang
+                </p>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-clock"></i></span> 24 Jam
+                </p>
+                <div class="cover_link">
+                  <a
+                    href="https://wa.me/6287878923204?text=Hallo%20saya%20ingin%20menanyakan%20tentang%20wisata%20pantai"
+                    class="btn btn-success btn-sm"
+                    target="_blank"
+                  >
+                    <span><i class="fa-brands fa-whatsapp"></i></span> Pesan
+                    Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card destination-card">
+              <img
+                src="assets/img/ciputih.jpg"
+                class="card-img-top"
+                alt="Gunung Bromo"
+                style="height: 200px"
+              />
+              <div class="card-body" style="height: 280px">
+                <h5 class="card-title fw-semibold">Pantai Ciputih</h5>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-location-dot"></i></span> Taman
+                  Nasional Ujung Kulon, Kertamukti, Kec.Sumur, Pandeglang,
+                  Banten
+                </p>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-tag"></i></span> Rp.5.000/orang
+                </p>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-clock"></i></span> 05.00-Malam
+                  hari
+                </p>
+                <div class="cover_link">
+                  <a
+                    href="https://wa.me/6287878923204?text=Hallo%20saya%20ingin%20menanyakan%20tentang%20wisata%20pantai"
+                    class="btn btn-success btn-sm"
+                    target="_blank"
+                  >
+                    <span><i class="fa-brands fa-whatsapp"></i></span> Pesan
+                    Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card destination-card">
+              <img
+                src="assets/img/tanjung_layar.jpg"
+                class="card-img-top"
+                alt="Raja Ampat"
+                style="height: 200px"
+              />
+              <div class="card-body" style="height: 280px">
+                <h5 class="card-title fw-semibold">Tanjung Layar</h5>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-location-dot"></i></span>
+                  Komp.Tanjung Layar Blok Ciantir, Ds.Wisata Sawarna, Bayah,
+                  Kab.Lebak, Banten
+                </p>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-tag"></i></span> Rp.5.000/orang
+                </p>
+                <p class="card-text text-start">
+                  <span><i class="fa-solid fa-clock"></i></span> 05.00-Malam
+                  hari
+                </p>
+                <div class="cover_link">
+                  <a
+                    href="https://wa.me/6287878923204?text=Hallo%20saya%20ingin%20menanyakan%20tentang%20wisata%20pantai"
+                    class="btn btn-success btn-sm"
+                    target="_blank"
+                  >
+                    <span><i class="fa-brands fa-whatsapp"></i></span> Pesan
+                    Sekarang
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Galeri Section -->
+    <section id="galeri" class="py-5 bg-light">
+      <div class="container text-center">
+        <h2 class="display-4 mb-4">Galeri Wisata Indonesia</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <!-- Gambar 1 -->
+          <div class="col">
+            <div class="gallery-item">
+              <img
+                src="assets/img/bugel mega.jpg"
+                class="img-fluid rounded"
+                alt="Galeri 1"
+              />
+            </div>
+          </div>
+          <!-- Gambar 2 -->
+          <div class="col">
+            <div class="gallery-item">
+              <img
+                src="assets/img/caringin.jpeg"
+                class="img-fluid rounded"
+                alt="Galeri 2"
+              />
+            </div>
+          </div>
+          <!-- Gambar 3 -->
+          <div class="col">
+            <div class="gallery-item">
+              <img
+                src="assets/img/ciputih.jpg"
+                class="img-fluid rounded"
+                alt="Galeri 3"
+              />
+            </div>
+          </div>
+          <!-- Gambar 4 -->
+          <div class="col">
+            <div class="gallery-item">
+              <img
+                src="assets/img/mabak_cilegon.jpg"
+                class="img-fluid rounded"
+                alt="Galeri 4"
+              />
+            </div>
+          </div>
+          <!-- Gambar 5 -->
+          <div class="col">
+            <div class="gallery-item">
+              <img
+                src="assets/img/tanjung_layar.jpg"
+                class="img-fluid rounded"
+                alt="Galeri 5"
+              />
+            </div>
+          </div>
+          <!-- Gambar 6 -->
+          <div class="col">
+            <div class="gallery-item">
+              <img
+                src="assets/img/bagedur.jpg"
+                class="img-fluid rounded"
+                alt="Galeri 6"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Review Section -->
+    <section id="review" class="py-5 bg-light">
+      <div class="container text-center">
+        <h2 class="display-4 mb-4">Apa Kata Mereka?</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="review-card" style="height: 300px">
+              <img src="assets/img/ref1.jpeg" alt="Avatar" />
+              <p>
+                "Pengalaman yang luar biasa di Banten. Alamnya menakjubkan!"
+              </p>
+              <p><strong>Anna</strong>, Wisatawan</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="review-card" style="height: 300px">
+              <img src="assets/img/ref2.jpeg" alt="Avatar" />
+              <p>
+                "Ciputih sangat indah saat matahari terbit. Tidak bisa
+                dilupakan!"
+              </p>
+              <p><strong>John</strong>, Wisatawan</p>
+            </div>
+          </div>
+          <div class="col">
+            <div class="review-card" style="height: 300px">
+              <img src="assets/img/ref3.jpeg" alt="Avatar" />
+              <p>"Pantai Bogel benar-benar surga dunia. Lautnya luar biasa!"</p>
+              <p><strong>Sarah</strong>, Wisatawan</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Form Masukan Saran -->
+    <section id="form-saran" class="py-5">
+      <div class="container">
+        <h2 class="display-4 text-center mb-4">Masukkan Saran Anda</h2>
+        <div class="form-container">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Nama</label>
+              <input type="text" class="form-control" id="name" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Pesan / Saran</label>
+              <textarea
+                class="form-control"
+                id="message"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-primary-custom">
+              Kirim Saran
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak Kami Section -->
+    <section id="kontak" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="display-4 text-center mb-4">Kontak Kami</h2>
+        <div class="row">
+          <div class="col-md-6 contact-info">
+            <p>
+              <strong>Alamat:</strong> Jl. Wisata Indonesia No. 123, Jakarta
+            </p>
+            <p><strong>Telepon:</strong> +62 123 456 789</p>
+            <p><strong>Email:</strong> info@wisataindonesia.com</p>
+          </div>
+          <div class="col-md-6">
+            <h4>Lokasi Kami</h4>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2029879.1698717333!2d104.62040018968838!3d-6.444382680405911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e418ad6c40db999%3A0xbed39aab8b1ab3e9!2sBanten!5e0!3m2!1sid!2sid!4v1735915310240!5m2!1sid!2sid"
+              width="100%"
+              height="350"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 Wisata Banten. Semua hak cipta dilindungi.</p>
+    </footer>
+
+    <!-- JS Bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript untuk Menambahkan Kelas Aktif pada Navbar -->
+    <script>
+      window.addEventListener("scroll", function () {
+        let sections = document.querySelectorAll("section");
+        let navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+
+        sections.forEach((section, index) => {
+          let sectionTop = section.offsetTop - 50;
+          let sectionHeight = section.clientHeight;
+          if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight
+          ) {
+            navLinks.forEach((link) => link.classList.remove("active"));
+            navLinks[index].classList.add("active");
+          }
+        });
+      });
+
+      // Event untuk menyembunyikan layar loading setelah konten dimuat
+      window.addEventListener("load", function () {
+        const loadingScreen = document.getElementById("loading-screen");
+        const mainContent = document.getElementById("main-content");
+
+        // Menunggu selama 2 detik sebelum menyembunyikan loading screen
+        setTimeout(function () {
+          // Menyembunyikan loading screen dan menampilkan konten utama
+          loadingScreen.style.display = "none";
+          mainContent.style.display = "block";
+        }, 2000); // 2000ms = 2 detik
+      });
+    </script>
+  </body>
+</html>
